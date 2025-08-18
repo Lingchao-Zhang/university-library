@@ -136,5 +136,25 @@ export const sampleBooks = [
   },
 ];
 
+// Field names and types of Sign in and Sign up auth form
+export const FIELD_NAMES = {
+  fullname: "Full name",
+  email: "Email",
+  universityId: "University ID Number",
+  password: "Password",
+  universityCard: "Upload University ID Card",
+};
 
+export const FIELD_TYPES = {
+  fullname: "text",
+  email: "email",
+  universityId: "number",
+  password: "password",
+};
+
+export const FIELD_PLACEHOLDERS = {
+  fullname: "Your full name",
+  email: "Your email",
+  password: "at least 8 characters",
+}
 

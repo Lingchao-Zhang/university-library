@@ -92,11 +92,29 @@
   }
 
   /* text styles */
+  .text-16-semibold-white {
+    @apply text-white text-[16px] font-semibold font-ibm-plex-sans;
+  }
+  .text-20-semibold-white {
+    @apply text-white text-[20px] font-semibold font-ibm-plex-sans;
+  }
   .text-28-semibold-white {
     @apply text-white text-[28px] font-semibold font-ibm-plex-sans;
   }
-  .text-20-normal-light-200{
-    @apply text-light-200 text-[20px] font-normal font-ibm-plex-sans;
+  .text-14-regular-light-100{
+    @apply text-light-100 text-[14px] font-normal font-ibm-plex-sans;
+  }
+  .text-16-regular-light-100{
+    @apply text-light-100 text-[16px] font-normal font-ibm-plex-sans;
+  }
+  .text-16-regular-italic-light-100{
+    @apply text-light-100 text-[16px] font-normal font-ibm-plex-sans italic;
+  }
+  .text-16-medium-light-100{
+    @apply text-light-100 text-[16px] font-medium font-ibm-plex-sans;
+  }
+  .text-18-regular-light-100{
+    @apply text-light-100 text-[18px] font-normal font-ibm-plex-sans;
   }
   .text-20-normal-light-100{
     @apply text-light-100 text-[20px] font-normal font-ibm-plex-sans;
@@ -104,21 +122,19 @@
   .text-20-semibold-light-100 {
     @apply text-light-100 text-[20px] font-semibold font-ibm-plex-sans;
   }
-  .text-20-semibold-light-200{
-    @apply text-light-200 text-[20px] font-semibold font-ibm-plex-sans;
-  }
   .text-30-semibold-light-100{
     @apply text-light-100 text-[30px] font-semibold font-ibm-plex-sans;
   }
-  .text-20-semibold-white {
-    @apply text-white text-[20px] font-semibold font-ibm-plex-sans;
+  .text-16-semibold-light-200{
+    @apply text-light-200 text-[16px] font-semibold font-ibm-plex-sans;
   }
-  .text-16-regular-italic-light-100{
-    @apply text-light-100 text-[16px] font-normal font-ibm-plex-sans italic;
+  .text-20-normal-light-200{
+    @apply text-light-200 text-[20px] font-normal font-ibm-plex-sans;
   }
-  .text-14-regular-light-100{
-    @apply text-light-100 text-[14px] font-normal font-ibm-plex-sans;
+  .text-20-semibold-light-200{
+    @apply text-light-200 text-[20px] font-semibold font-ibm-plex-sans;
   }
+
   /* books related styles */
   .book-overview{
     @apply mt-20 gap-9 flex max-sm:flex-col-reverse items-center
@@ -149,5 +165,23 @@
   }
   .book-card-btn{
     @apply flex items-center h-5 px-4 py-7 rounded-xl bg-dark-600 text-light-200 text-[20px] font-bebas-neue font-normal
+  }
+
+  /* auth form related style */
+  .auth-container{
+    @apply flex min-h-screen min-w-screen flex-1 max-sm:flex-col-reverse bg-pattern bg-cover bg-top
+  }
+
+  .auth-illustration{
+    @apply max-sm:h-30 max-sm:w-full flex-1 
+  }
+  .auth-form-container{
+    @apply w-1/2 max-sm:w-full rounded-2xl p-10 gap-9 sm:my-20 sm:mx-23.5 
+  }
+
+  /* gradient-bg-color */
+  .gradient-dark{
+    background: linear-gradient(180deg, #12141D 0%, #12151F 100%);
+    box-shadow: 0px 0px 70px 0px #00000033;
   }
 }
