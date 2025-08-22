@@ -1,0 +1,1 @@
+ALTER TABLE "users_table" ALTER COLUMN "last_activity_time" SET DEFAULT now();
