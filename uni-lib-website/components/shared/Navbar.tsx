@@ -1,11 +1,14 @@
+
 import Image from "next/image"
 import Link from "next/link"
 import webLogo from "@/public/icons/logo.svg"
-import avatar from "@/public/icons/user.svg"
 import logout from "@/public/icons/logout.svg"
 import homeIcon from "@/public/icons/home.svg"
 import searchIcon from "@/public/icons/search-fill.svg"
-const Navbar = () => {
+import { Avatar, AvatarFallback } from "../ui/avatar"
+import { getNameInitial } from "@/lib/utils"
+import { signOut } from "@/auth"
+const Navbar = ({userName, userId}: {userName: string, userId: string}) => {
     return(
         <section className="navbar">
             <div className="flex gap-2">
@@ -22,7 +25,7 @@ const Navbar = () => {
                     <span className="text-20-normal-light-200 max-sm:hidden">Home</span>
                     <Image 
                         src={homeIcon}
-                        alt="avatar placeholder"
+                        alt="home icon"
                         width={32}
                         height={32}
                         className="rounded-full sm:hidden"
@@ -32,7 +35,7 @@ const Navbar = () => {
                     <span className="text-20-normal-light-100 max-sm:hidden">Search</span>
                     <Image 
                         src={searchIcon}
-                        alt="avatar placeholder"
+                        alt="search icon"
                         width={32}
                         height={32}
                         className="rounded-full sm:hidden"
@@ -40,23 +43,28 @@ const Navbar = () => {
                 </Link>
                 <div className="flex-between gap-8">
                     <div className="flex-between gap-2">
-                        <Image 
-                            src={avatar}
-                            alt="avatar placeholder"
-                            width={32}
-                            height={32}
-                            className="rounded-full"
-                        />
-                        <span className="text-20-semibold-light-100 max-sm:hidden">username</span>
+                        <Link href={`/profile/${userId}`}>
+                            <Avatar>
+                                <AvatarFallback>{getNameInitial(userName)}</AvatarFallback>
+                            </Avatar>
+                        </Link>
+                        <span className="text-20-semibold-light-100 max-sm:hidden">{userName}</span>
                     </div>
-                    <button>
-                        <Image 
-                            src={logout}
-                            alt="avatar placeholder"
-                            width={24}
-                            height={24}
-                        />
-                    </button>
+                    <form
+                        action={async () => {
+                            "use server"
+                            await signOut()
+                        }}
+                    >
+                        <button type="submit">
+                            <Image 
+                                src={logout}
+                                alt="logout icon"
+                                width={24}
+                                height={24}
+                            />
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>

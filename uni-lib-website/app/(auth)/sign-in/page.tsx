@@ -1,4 +1,5 @@
 import AuthForm from "@/components/forms/AuthForm"
+import { signInWithCredentials } from "@/lib/actions/auth"
 import { signInFormSchema } from "@/lib/schema"
 
 
@@ -12,6 +13,7 @@ const SignIn = () => {
             type={"Sign_In"} 
             formSchema={signInFormSchema} 
             defaultValues={signInDefaultValues}
+            onSubmit={signInWithCredentials}
         />
     )
 }

@@ -15,6 +15,13 @@
       "when": 1755852974023,
       "tag": "0001_silly_skin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757581971234,
+      "tag": "0002_classy_anita_blake",
+      "breakpoints": true
     }
   ]
 }

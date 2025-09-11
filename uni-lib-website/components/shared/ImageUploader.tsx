@@ -11,7 +11,7 @@ import { Image, ImageKitProvider } from '@imagekit/next';
 import { useRef, useState } from "react";
 import { Input } from "../ui/input";
 import config from "@/lib/config";
-const ImageUploader = ({fileOnChange}: {fileOnChange: (filePath: string) => void}) => {
+const ImageUploader = ({imageUrlOnChange}: {imageUrlOnChange: (imageUrl: string) => void}) => {
     const {env: {imageKit: { urlEndpoint }}} = config
     // to store the url of uploaded image
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -72,7 +72,7 @@ const ImageUploader = ({fileOnChange}: {fileOnChange: (filePath: string) => void
         // Extract the first file from the file input
         const file = fileInput.files[0];
         const fileName = file.name
-        fileOnChange(fileName)
+        // fileOnChange(fileName)
         // Retrieve authentication parameters for the upload.
         let authParams;
         try {
@@ -97,6 +97,7 @@ const ImageUploader = ({fileOnChange}: {fileOnChange: (filePath: string) => void
                 abortSignal: abortController.signal,
             });
             setImageUrl(uploadResult.url as string)
+            imageUrlOnChange(uploadResult.url as string)
         } catch (error) {
             // Handle specific error types provided by the ImageKit SDK.
             if (error instanceof ImageKitAbortError) {
@@ -117,7 +118,7 @@ const ImageUploader = ({fileOnChange}: {fileOnChange: (filePath: string) => void
     return (
         <>
             {/* File input element using React ref */}
-            <Input type="file" ref={fileInputRef} className="text-16-regular-light-100" />
+            <Input type="file" ref={fileInputRef} className="text-16-regular-light-100"/>
             {/* Button to trigger the upload process */}
             <button type="button" onClick={handleUpload}>
                 <span className="text-16-regular-light-100">Upload file</span>
