@@ -12,7 +12,7 @@ const BookList = (
             <h1 className="text-30-semibold-light-100">{bookListName}</h1>
             <ul className="book-list">
                 {
-                    bookList.map((book: bookCardType) => <BookCard {...book}/>)
+                    bookList.map((book: bookCardType) => <BookCard key={book.id} {...book}/>)
                 }
             </ul>
         </section>

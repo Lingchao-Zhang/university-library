@@ -37,3 +37,11 @@ export type bookListType = {
     bookListName: string,
     bookList: bookCardType[] 
 }
+
+export type signAuthCredentialsType = {
+  fullName: string,
+  email: string,
+  universityId: number,
+  password: string,
+  universityCard: string,
+}
