@@ -8,8 +8,18 @@ import { signAuthCredentialsType } from "@/types"
 import { genSalt, hash} from "bcryptjs"
 import { eq } from "drizzle-orm"
 import { isRedirectError } from "next/dist/client/components/redirect-error"
+import { headers } from "next/headers"
+import { ratelimit } from "../ratelimit"
+import { redirect } from "next/navigation"
 
 export const signInWithCredentials = async (params: Pick<signAuthCredentialsType, "email" | "password">) => {
+     // get the current user ip and apply rate limit
+    const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1'
+    const { success }= await ratelimit.limit(ip)
+    if(!success){
+        redirect("/high-frequency-visit")
+    }
+    
     try{
         const signInResult = await signIn("credentials", params)
         if(!signInResult){
@@ -30,6 +40,13 @@ export const signInWithCredentials = async (params: Pick<signAuthCredentialsType
 export const signUp = async (params: signAuthCredentialsType) => {
     const {email, fullName, universityId, password, universityCard} = params
     // check whether the user exists or not
+
+    // get the current user ip and apply rate limit
+    const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1'
+    const { success }= await ratelimit.limit(ip)
+    if(!success){
+        redirect("/high-frequency-visit")
+    }
     const existingUser = await db
                          .select()
                          .from(usersTable)
