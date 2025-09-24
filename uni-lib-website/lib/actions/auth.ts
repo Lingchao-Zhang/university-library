@@ -11,6 +11,8 @@ import { isRedirectError } from "next/dist/client/components/redirect-error"
 import { headers } from "next/headers"
 import { ratelimit } from "../ratelimit"
 import { redirect } from "next/navigation"
+import { workflowClient } from "../workflow"
+import config from "../config"
 
 export const signInWithCredentials = async (params: Pick<signAuthCredentialsType, "email" | "password">) => {
      // get the current user ip and apply rate limit
@@ -73,6 +75,13 @@ export const signUp = async (params: signAuthCredentialsType) => {
             password: hashPassword,
             universityCard
             })
+
+        //execute send email to new user
+        const workflowResult = await workflowClient.trigger({
+            url: `${config.env.apiEndpoint}/api/workflow`,
+            body: {email, fullName} 
+        })
+        console.log(workflowResult)
     } catch(error){
         console.log(error, "Sign up Error!")
         return {success: false, error: "Sign up Error!"}

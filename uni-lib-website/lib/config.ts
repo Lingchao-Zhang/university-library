@@ -10,7 +10,16 @@ const config = {
         databaseUrl: process.env.DATABASE_URL!,
         upstash: {
             redisUrl: process.env.UPSTASH_REDIS_REST_URL!,
-            redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!
+            redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!,
+            qstashUrl: process.env.QSTASH_URL!,
+            qstashToken: process.env.QSTASH_TOKEN!
+        },
+        emailJS: {
+            publicKey: process.env.EMAILJS_API_PUBLIC_KEY!,
+            privateKey: process.env.EMAILJS_API_PRIVATE_KEY!,
+            serviceID: process.env.EMAILJS_SERVICE_ID!,
+            welcomeTemplateID: process.env.EMAILJS_WELCOME_TEMPLATE_ID!,
+            nonActiveTemplateID: process.env.EMAILJS_NON_ACTIVE_TEMPLATE_ID!
         }
     }
 }
