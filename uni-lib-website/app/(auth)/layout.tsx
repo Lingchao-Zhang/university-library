@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-import illustrationImage from "@/public/images/auth-illustration.png"
-import webLogo from "@/public/icons/logo.svg"
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
@@ -19,7 +17,7 @@ const RootLayout = async ({
         <section className="gradient-dark auth-form-container">
              <div className="flex gap-2">
                 <Image 
-                 src={webLogo}
+                 src="/icons/logo.svg"
                  alt="website logo"
                  width={40}
                  height={32}
@@ -30,7 +28,7 @@ const RootLayout = async ({
         </section>
         <section className="auth-illustration">
             <Image 
-                src={illustrationImage}
+                src="/images/auth-illustration.png"
                 alt="auth-illustration-image"
                 width={912}
                 height={1110}

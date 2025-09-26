@@ -1,10 +1,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import webLogo from "@/public/icons/logo.svg"
-import logout from "@/public/icons/logout.svg"
-import homeIcon from "@/public/icons/home.svg"
-import searchIcon from "@/public/icons/search-fill.svg"
 import { Avatar, AvatarFallback } from "../ui/avatar"
 import { getNameInitial } from "@/lib/utils"
 import { signOut } from "@/auth"
@@ -13,7 +9,7 @@ const Navbar = ({userName, userId}: {userName: string, userId: string}) => {
         <section className="navbar">
             <div className="flex gap-2">
                 <Image 
-                 src={webLogo}
+                 src="/icons/logo.svg"
                  alt="website logo"
                  width={40}
                  height={32}
@@ -24,7 +20,7 @@ const Navbar = ({userName, userId}: {userName: string, userId: string}) => {
                 <Link href="/">
                     <span className="text-20-normal-light-200 max-sm:hidden">Home</span>
                     <Image 
-                        src={homeIcon}
+                        src="/icons/home.svg"
                         alt="home icon"
                         width={32}
                         height={32}
@@ -34,7 +30,7 @@ const Navbar = ({userName, userId}: {userName: string, userId: string}) => {
                 <Link href="/">
                     <span className="text-20-normal-light-100 max-sm:hidden">Search</span>
                     <Image 
-                        src={searchIcon}
+                        src="/icons/search-fill.svg"
                         alt="search icon"
                         width={32}
                         height={32}
@@ -58,7 +54,7 @@ const Navbar = ({userName, userId}: {userName: string, userId: string}) => {
                     >
                         <button type="submit">
                             <Image 
-                                src={logout}
+                                src="/icons/logout.svg"
                                 alt="logout icon"
                                 width={24}
                                 height={24}

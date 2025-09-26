@@ -1,6 +1,4 @@
 import Image from "next/image"
-import starIcon from "@/public/icons/star.svg"
-import bookIcon from "@/public/icons/book.svg"
 import { Button } from "../ui/button"
 import { bookOverviewType } from "@/types"
 import Link from "next/link"
@@ -34,7 +32,7 @@ const BookOverview = (
                     </div>
                     <div className="book-single-content">
                         <Image 
-                         src={starIcon}
+                         src="/icons/star.svg"
                          alt="star-icon"
                          height={22}
                          width={22}
@@ -55,7 +53,7 @@ const BookOverview = (
                 <p className="text-20-normal-light-100">{description}</p>
                 <Button className="book-overview-btn">
                     <Image 
-                         src={bookIcon}
+                         src="/icons/book.svg"
                          alt="star-icon"
                          height={20}
                          width={20}
