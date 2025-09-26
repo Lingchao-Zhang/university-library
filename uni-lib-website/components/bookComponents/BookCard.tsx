@@ -1,7 +1,6 @@
 import { bookCardType } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
-import calenderIcon from "@/public/icons/calendar.svg"
 const BookCard = (
     {
         id,
@@ -29,7 +28,7 @@ const BookCard = (
                 <div className="mt-3">
                     <div className="flex gap-2 mb-2.5">
                         <Image 
-                        src={calenderIcon}
+                        src="/icons/calendar.svg"
                         alt="calendar"
                         width={20}
                         height={20}
