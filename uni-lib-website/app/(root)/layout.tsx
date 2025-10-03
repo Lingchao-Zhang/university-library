@@ -5,6 +5,7 @@ import { usersTable } from "@/database/schema";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { eq } from "drizzle-orm"
+import { after } from "next/server";
 
 const RootLayout = async ({
   children
@@ -16,12 +17,14 @@ const RootLayout = async ({
     redirect("/sign-in")
   } 
   // Update user lastActivityDate only once a day when user sign in
-  if(session.user?.email) {
+  // use after to make sure the user lastActivityTime updated execution will not block the response
+  after(async() => {
+    if(!session.user?.email) return;
     const user = await db
-                       .select()
-                       .from(usersTable)
-                       .where(eq(usersTable.email, session.user?.email))
-                       .limit(1)
+                        .select()
+                        .from(usersTable)
+                        .where(eq(usersTable.email, session.user?.email))
+                        .limit(1)
     // only get day/month/year of the time
     const lastActivityDate = user[0].lastActivityTime.toString().slice(4,15) 
     const today = (new Date()).toString().slice(4,15)
@@ -30,7 +33,7 @@ const RootLayout = async ({
             .update(usersTable)
             .set({ lastActivityTime: new Date()})
     } 
-  }
+  })
   return (
     <main className="container">
       <div className="mx-25 max-sm:mx-4">
