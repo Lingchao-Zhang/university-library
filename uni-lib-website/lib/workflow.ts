@@ -15,12 +15,12 @@ export const sendEmail = async (email: string, fullName: string, templateID: str
 
     // construct the template parameters
     const templateParams = {
-        email,
-        fullName
+        fullName,
+        email
     }
 
     try{
-        emailjs.send(serviceID, templateID, templateParams, {publicKey});
+        await emailjs.send(serviceID, templateID, templateParams, {publicKey: publicKey});
         return { success: true }
     } catch(error){
         console.log(error)

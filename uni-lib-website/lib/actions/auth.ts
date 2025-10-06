@@ -77,15 +77,16 @@ export const signUp = async (params: signAuthCredentialsType) => {
             })
 
         //execute send email to new user
-        const workflowResult = await workflowClient.trigger({
+         await workflowClient.trigger({
             url: `${config.env.apiEndpoint}/api/workflow`,
-            body: {email, fullName},
+            body: { fullName, email },
             retries: 3,
             headers: {
-                "Authorization":`Bearer ${config.env.upstash.qstashToken}`,
-            } 
-        })
-        console.log(workflowResult)
+                "Authorization": `Bearer ${config.env.upstash.qstashToken}`,
+                "Content-Type": "application/json"
+            }
+        });
+        
     } catch(error){
         console.log(error, "Sign up Error!")
         return {success: false, error: "Sign up Error!"}
