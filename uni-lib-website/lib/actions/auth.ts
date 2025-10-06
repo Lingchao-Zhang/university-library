@@ -75,10 +75,11 @@ export const signUp = async (params: signAuthCredentialsType) => {
             password: hashPassword,
             universityCard
             })
-
+        const bypassToken = process.env.VERCEL_BYPASS_TOKEN! 
+        const workflowUrl = `${config.env.apiEndpoint}/api/workflow?x-vercel-set-bypass-cookie=true&x-vercel-protection-bypass${bypassToken}`;
         //execute send email to new user
          await workflowClient.trigger({
-            url: `${config.env.apiEndpoint}/api/workflow`,
+            url: workflowUrl,
             body: { fullName, email },
             retries: 3,
             headers: {
